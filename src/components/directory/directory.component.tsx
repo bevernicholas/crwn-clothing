@@ -33,14 +33,14 @@ class Directory extends Component<any, DirectoryState> {
         {
           title: 'womens',
           imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-          size: 'large',
+          imageSize: 'large',
           id: 4,
           linkUrl: 'shop/womens'
         },
         {
           title: 'mens',
           imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
-          size: 'large',
+          imageSize: 'large',
           id: 5,
           linkUrl: 'shop/mens'
         }
@@ -52,8 +52,8 @@ class Directory extends Component<any, DirectoryState> {
     const { sections } = this.state;
     return (
       <div className="directory-menu">
-        {sections.map(({ id, title, imageUrl, size }) => (
-          <MenuItem key={id} title={title} imageUrl={imageUrl} imageSize={size} />
+        {sections.map(({ id, ...menuItemProps }) => (
+          <MenuItem key={id} {...menuItemProps} />
         ))}
       </div>
     );
