@@ -1,4 +1,7 @@
 import React from 'react';
+
+import CollectionItem from '../collection-item/collection-item.component'
+
 import './collection-preview.styles.scss';
 
 interface CollectionPreviewProps {
@@ -11,7 +14,7 @@ const CollectionPreview: React.FC<CollectionPreviewProps> = ({ title, items }) =
     <div className='collection-preview'>
       <h1 className='title'>{title}</h1>
       <div className='preview'>
-        {items.filter((item:any, index:any) => index < 4).map((item: any) => (<div key={item.id}>{item.name}</div>))}
+        {items.filter((item:any, index:any) => index < 4).map(({id, ...itemProps}) => (<CollectionItem key={id} {...itemProps}/>))}
       </div>
     </div>
   )
