@@ -3,12 +3,14 @@ import React from 'react';
 import './custom-button.styles.scss';
 
 interface CustomButtonProps {
-  type: "button" | "submit" | "reset" | undefined;
+  type?: "button" | "submit" | "reset" | undefined;
+  onClick?: any;
+  isGoogleSignIn?: any;
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ children, type }) => {
+const CustomButton: React.FC<CustomButtonProps> = ({ children, type, onClick, isGoogleSignIn }) => {
   return (
-    <button className="custom-button" type={type}>
+    <button className={`${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`} type={type} onClick={onClick}>
       {children}
     </button>
   )
