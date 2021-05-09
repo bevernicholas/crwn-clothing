@@ -1,15 +1,34 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import CollectionItem from '../../components/collection-item/collection-item.component';
+import { selectCollection } from '../../redux/shop/shop.selectors';
+import { ItemType } from '../../types';
 
 import './collection.styles.scss';
 
-const CollectionPage: React.FC<RouteComponentProps> = ({ match }) => (
-  <div className="collection-page">
-    <h2>COLLECTION PAGE</h2>
-  </div>
-);
+interface CollectionPageProps {
+  collection: any;
+}
 
-export default CollectionPage;
+const CollectionPage: React.FC<CollectionPageProps & RouteComponentProps> = ({ collection }) => {
+  const { items, title } = collection;
+  return (
+    <div className="collection-page">
+      <h2 className="title">{title}</h2>
+      <div className="items">
+        {items.map((item: ItemType) => (
+          <CollectionItem key={item.id} item={item} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const mapStateToProps = (state: any, ownProps: any) => ({
+  collection: selectCollection(ownProps.match.params.collectionId)(state)
+});
+
+export default connect(mapStateToProps)(CollectionPage);
 

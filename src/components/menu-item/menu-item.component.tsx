@@ -7,12 +7,12 @@ interface MenuItemProps {
   title: string;
   imageUrl: string;
   imageSize: string;
-  shopUrl: string;
+  linkUrl: string;
 }
 
-const MenuItem: React.FC<MenuItemProps & RouteComponentProps> = ({ title, imageUrl, imageSize, history, shopUrl, match }) => {
+const MenuItem: React.FC<MenuItemProps & RouteComponentProps> = ({ title, imageUrl, imageSize, history, linkUrl, match }) => {
   return (
-    <div className={`menu-item ${imageSize}`} onClick={() => history.push(`${match.url}${shopUrl}`)}>
+    <div className={`menu-item ${imageSize}`} onClick={() => history.push(`${match.url}${linkUrl}`)}>
       <div className="background-image" style={{
         backgroundImage: `url(${imageUrl})`,
       }} />
