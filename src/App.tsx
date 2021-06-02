@@ -12,7 +12,6 @@ import Header from './components/header/header.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selector';
-import { create } from 'node:domain';
 
 interface AppProps {
   setCurrentUser: any;
@@ -68,7 +67,7 @@ class App extends React.Component<AppProps,any> {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
